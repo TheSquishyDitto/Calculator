@@ -1,0 +1,5 @@
+flex calculator.l
+bison -dy calculator.y
+gcc -c lex.yy.c y.tab.c
+gcc y.tab.o lex.yy.o -o calculator.exe
+calculator.exe

@@ -1527,3 +1527,15 @@ yyreturn:
 /* Line 1675 of yacc.c  */
 #line 16 "calculator.y"
 
+
+int main(void)
+{
+ yyparse();
+ return 0;
+}
+
+int yyerror(void)
+{
+  printf("INVALID\n");
+  return(1);
+}

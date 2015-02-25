@@ -7,28 +7,17 @@
 
 %%
 
-
-[0-9]+													return NUMBER;  
-\+ | "-" | "*" | "%" | "/"								return OPERATOR;
-abs | sin | cos | sqrt | log | log10 | exp | pow 		return FUNCTION;
-\n	  													;
-[ \t]+ 													;
+[0-9]+																		{printf("NUMBER\n");};  
+[+\-*/%]																	{printf("OPERATION\n");};
+("abs"|"sin"|"cos"|"sqrt"|"log"|"log10"|"exp"|"pow")"\n" 					{printf("FUNCTION\n");};
+\n	  																								;
+[ \t]+ 																								;
+.																	        { yyerror();  }
 
 %%
-
-int main(void)
-{
- yyparse();
- return 0;
-}
 
 int yywrap(void)
 {
  return 0;
 }
 
-int yyerror(void)
-{
-  printf("Error\n");
-  exit(1);
-}

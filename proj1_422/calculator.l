@@ -7,9 +7,9 @@
 
 %%
 
-[0-9]+																		{printf("NUMBER\n");};  
-[+\-*/%]																	{printf("OPERATION\n");};
-("abs"|"sin"|"cos"|"sqrt"|"log"|"log10"|"exp"|"pow")"\n" 					{printf("FUNCTION\n");};
+(-?"."?[0-9]+|-?[0-9]+"."[0-9])												{yylval = atof(yytext); return NUMBER;}; 
+[+\-*/%]																	{return *yytext;};
+("abs"|"sin"|"cos"|"sqrt"|"log"|"log10"|"exp"|"pow") 						{return FUNCTION;};
 \n	  																								;
 [ \t]+ 																								;
 .																	        { yyerror();  }

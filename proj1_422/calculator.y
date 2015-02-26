@@ -1,16 +1,23 @@
 %token NUMBER FUNCTION OPERATOR
+%left '+' '-'
+%left '*' '/'
 
 %%
 
-program: 
-        operator number
+program: /* nothing */
+        | program answer '\n'
         ;
+		
+answer: expression {printf("%f\n", $1);}
+		;
 
-number:     
-        NUMBER     { printf("NUMBER\n");   }
-        ;
-operator:    
-        OPERATOR    { printf("OPERATOR\n"); exit(0);}
+expression: NUMBER
+		| '-' expression 				{$$ = -$2;}
+        | expression '+' expression 	{$$ = $1 + $3;}
+		| expression '-' expression		{$$ = $1 - $3;}
+		| expression '*' expression		{$$ = $1 * $3;}
+		| expression '/' expression		{$$ = $1 / $3;}
+		| expression '%' expression		{$$ = $1 % $3;}
         ;
 		 
 %%

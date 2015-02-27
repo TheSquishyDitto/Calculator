@@ -39,19 +39,30 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     NUMBER = 258,
-     NEG = 259
+     VARIABLE = 258,
+     NUMBER = 259
    };
 #endif
-/* Tokens.  */
-#define NUMBER 258
-#define NEG 259
-
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+typedef union YYSTYPE
+{
+
+/* Line 1676 of yacc.c  */
+#line 32 "grammar.y"
+
+    /* this will be used for the yylval. */
+    /* it is a union since two data types will be used */
+    double num;     // the number provided by the user
+    int index;      // index of the variable name inside the array
+
+
+
+/* Line 1676 of yacc.c  */
+#line 65 "grammar.tab.h"
+} YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1

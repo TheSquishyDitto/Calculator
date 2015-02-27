@@ -70,13 +70,14 @@
 /* Line 189 of yacc.c  */
 #line 1 "calculator.y"
 
-	#define YYSTYPE double
+	//#define YYSTYPE double
 	#include <math.h>
 	#include <stdio.h>
+	#include "calculator.tab.h"
 
 
 /* Line 189 of yacc.c  */
-#line 80 "y.tab.c"
+#line 81 "calculator.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -107,15 +108,23 @@
      NEG = 259
    };
 #endif
-/* Tokens.  */
-#define NUMBER 258
-#define NEG 259
-
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+typedef union YYSTYPE
+{
+
+/* Line 214 of yacc.c  */
+#line 8 "calculator.y"
+
+	double num;
+
+
+
+/* Line 214 of yacc.c  */
+#line 127 "calculator.tab.c"
+} YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -126,7 +135,7 @@ typedef int YYSTYPE;
 
 
 /* Line 264 of yacc.c  */
-#line 130 "y.tab.c"
+#line 139 "calculator.tab.c"
 
 #ifdef short
 # undef short
@@ -411,8 +420,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    14,    14,    15,    18,    19,    22,    23,    24,    25,
-      26,    27
+       0,    21,    21,    22,    25,    26,    29,    30,    31,    32,
+      33,    34
 };
 #endif
 
@@ -1317,56 +1326,56 @@ yyreduce:
         case 5:
 
 /* Line 1455 of yacc.c  */
-#line 19 "calculator.y"
-    { printf ("\t%.10g\n", (yyvsp[(1) - (2)])); }
+#line 26 "calculator.y"
+    { printf ("\t%.10g\n", (yyvsp[(1) - (2)].num)); ;}
     break;
 
   case 6:
 
 /* Line 1455 of yacc.c  */
-#line 22 "calculator.y"
-    {(yyval) = (yyvsp[(1) - (1)]);	  }
+#line 29 "calculator.y"
+    {(yyval.num) = (yyvsp[(1) - (1)].num);	  ;}
     break;
 
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 23 "calculator.y"
-    {(yyval) = -(yyvsp[(2) - (2)]);	  }
+#line 30 "calculator.y"
+    {(yyval.num) = -(yyvsp[(2) - (2)].num);	  ;}
     break;
 
   case 8:
 
 /* Line 1455 of yacc.c  */
-#line 24 "calculator.y"
-    {(yyval) = (yyvsp[(1) - (3)]) + (yyvsp[(3) - (3)]);}
+#line 31 "calculator.y"
+    {(yyval.num) = (yyvsp[(1) - (3)].num) + (yyvsp[(3) - (3)].num);;}
     break;
 
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 25 "calculator.y"
-    {(yyval) = (yyvsp[(1) - (3)]) - (yyvsp[(3) - (3)]);}
+#line 32 "calculator.y"
+    {(yyval.num) = (yyvsp[(1) - (3)].num) - (yyvsp[(3) - (3)].num);;}
     break;
 
   case 10:
 
 /* Line 1455 of yacc.c  */
-#line 26 "calculator.y"
-    {(yyval) = (yyvsp[(1) - (3)]) * (yyvsp[(3) - (3)]);}
+#line 33 "calculator.y"
+    {(yyval.num) = (yyvsp[(1) - (3)].num) * (yyvsp[(3) - (3)].num);;}
     break;
 
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 27 "calculator.y"
-    {(yyval) = (yyvsp[(1) - (3)]) / (yyvsp[(3) - (3)]);}
+#line 34 "calculator.y"
+    {(yyval.num) = (yyvsp[(1) - (3)].num) / (yyvsp[(3) - (3)].num);;}
     break;
 
 
 
 /* Line 1455 of yacc.c  */
-#line 1370 "y.tab.c"
+#line 1379 "calculator.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1578,7 +1587,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 30 "calculator.y"
+#line 37 "calculator.y"
 
 
 int main(void)

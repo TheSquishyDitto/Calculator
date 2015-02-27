@@ -1,0 +1,6 @@
+flex scanner.l
+gcc lex.yy.c -lfl -o scanner.exe
+scanner.exe
+
+NOTE:   Current implementation will read the numbers inside of functions separately from the functions.
+	To change this, simply remove the slash '/' from the function line and get rid of the parentheses line.

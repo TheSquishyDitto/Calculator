@@ -1,18 +1,19 @@
 %{
 
 #include <stdio.h>
-#include "y.tab.h"
+#include <stdlib.h>
+#include "calculator.tab.h"
 
 %}
 
+integer 	[0-9]+
+number		{integer}|({integer})?"."{integer}|{integer}"."({integer})?
+
 %%
 
-(-?"."?[0-9]+|-?[0-9]+"."[0-9])												{yylval = atof(yytext); return NUMBER;}; 
-[+\-*/%]																	{return *yytext;};
-("abs"|"sin"|"cos"|"sqrt"|"log"|"log10"|"exp"|"pow") 						{return FUNCTION;};
-\n	  																								;
-[ \t]+ 																								;
-.																	        { yyerror();  }
+[0-9]+																		{yylval.num = atof(yytext); return NUMBER;}; 
+[ \t\n] 																							;
+.																	        { /*yyerror();*/  }
 
 %%
 

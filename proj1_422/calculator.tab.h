@@ -43,15 +43,23 @@
      NEG = 259
    };
 #endif
-/* Tokens.  */
-#define NUMBER 258
-#define NEG 259
-
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+typedef union YYSTYPE
+{
+
+/* Line 1676 of yacc.c  */
+#line 8 "calculator.y"
+
+	double num;
+
+
+
+/* Line 1676 of yacc.c  */
+#line 62 "calculator.tab.h"
+} YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1

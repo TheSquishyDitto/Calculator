@@ -1,3 +1,12 @@
+Not sure if there's a best way to do it, so either:
+
+bison -d calculator.y
+flex calculator.l
+gcc calculator.tab.c lex.yy.c -o calculator.exe
+calculator.exe
+
+-------- OR ---------
+
 flex calculator.l
 bison -dy calculator.y
 gcc -c lex.yy.c y.tab.c

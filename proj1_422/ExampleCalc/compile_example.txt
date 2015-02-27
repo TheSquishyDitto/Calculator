@@ -1,0 +1,9 @@
+bison -d grammar.y
+flex lexana.l
+gcc grammar.tab.c lex.yy.c -lm -o calculator.exe
+calculator.exe
+
+
+Example Input (the semicolons are important):
+2 + 2;
+2 * 3;
